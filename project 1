@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=login, initial-scale=1.0">
+    <title>login</title>
+    <link rel="sheetstyle" href="login.css">
+</head>
+<body>
+    <h4>login</h4>
+    <form action="obby.php" method="POST">
+        <label>email</label>
+        <inpumt type="email" name="name" placeholder="plees enntr email"><br></br>
+        <label>password</label>
+        <input type="password" name="password" placeholder="plees enntr password"><br></br>
+        <button type="save" name="submit">login</button>
+
+</form>
+
+    
+</body>
+</html>
+<?php
+$conn=mysqli_connect('localhost','root','','obby_pro');
+if(isset($_POST["submit"])){
+$u=$_POST["name"];
+$pass=$_POST['password'];
+$insert="INSERT INTO erik(email,password) VALUES('$u','$pass')";
+$query=mysqli_query($conn,$insert);
+if($query){
+    echo "<script>alert('form successfully')</script>";
+}
+else{
+    echo"<script>alert('form login notsuccessfully')</scpirt>";
+}
+}
+?>
